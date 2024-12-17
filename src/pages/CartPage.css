@@ -26,17 +26,30 @@
     margin-right: 20px;
   }
   
-  .cart-item h3 {
-    margin: 0 0 5px 0;
+  .cart-item-details {
+    display: flex;
+    flex-direction: column;
   }
   
-  .cart-item button {
-    background-color: #ff5722;
+  .quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+  }
+  
+  .quantity-controls button {
+    padding: 5px 10px;
+    font-size: 16px;
+    background-color: #007bff;
     color: white;
     border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
     cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .quantity-controls button:hover {
+    background-color: #0056b3;
   }
   
   .order-summary {
@@ -55,4 +68,3 @@
   .order-summary p {
     font-size: 1.2rem;
   }
-  

@@ -1,32 +1,19 @@
-import React, { useEffect, useState } from "react";
-import ProductList from "../components/ProductList";
+import React, { useEffect, useState } from 'react';
+import ProductList from '../components/ProductList';
 
-const Home = () => {
-  const [cart, setCart] = useState(() => {
-    const savedCart = localStorage.getItem("cart");
-    return savedCart ? JSON.parse(savedCart) : [];
-  });
+const Home = ({ addToCart }) => {
+  const [products, setProducts] = useState([]);
 
-  const addToCart = (product) => {
-    const existingItem = cart.find((item) => item.id === product.id);
-
-    let updatedCart;
-    if (existingItem) {
-      updatedCart = cart.map((item) =>
-        item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
-      );
-    } else {
-      updatedCart = [...cart, { ...product, quantity: 1 }];
-    }
-
-    setCart(updatedCart);
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
-  };
+  useEffect(() => {
+    fetch('https://fakestoreapi.com/products')
+      .then(response => response.json())
+      .then(data => setProducts(data));
+  }, []);
 
   return (
-    <div>
-      <h2>Product List</h2>
-      <ProductList addToCart={addToCart} />
+    <div className="home">
+      <h1>Welcome to Our Store</h1>
+      <ProductList products={products} addToCart={addToCart} />
     </div>
   );
 };
