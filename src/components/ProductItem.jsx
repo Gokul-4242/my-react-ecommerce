@@ -1,12 +1,24 @@
 import React from 'react';
+// import './ProductItem.css';
 
-const ProductItem = ({ product, addToCart }) => {
+const ProductItem = ({ product, addToCart, cart }) => {
+  const isInCart = cart.some(item => item.id === product.id);
+
   return (
-    <div className="product-item">
-      <img src={product.image} alt={product.title} />
-      <h3>{product.title}</h3>
-      <p>${product.price}</p>
-      <button onClick={() => addToCart(product)}>Add to Cart</button>
+    <div className="card product-card animate-fade-in">
+      <img src={product.image} className="card-img-top p-4" alt={product.title} style={{ height: '250px', objectFit: 'contain' }} />
+      <div className="card-body d-flex flex-column">
+        <h5 className="card-title">{product.title}</h5>
+        <p className="card-text">${product.price}</p>
+        
+        <button
+          className={`btn mt-auto ${isInCart ? 'btn-success' : 'btn-primary'}`}
+          onClick={() => !isInCart && addToCart(product)}
+          disabled={isInCart}
+        >
+          {isInCart ? 'In Cart ✅' : 'Add to Cart'}
+        </button>
+      </div>
     </div>
   );
 };

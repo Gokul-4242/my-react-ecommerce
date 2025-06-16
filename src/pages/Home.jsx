@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import ProductList from '../components/ProductList';
+import './Home.css';
 
-const Home = ({ addToCart }) => {
+const Home = ({ addToCart, cart }) => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -12,8 +13,8 @@ const Home = ({ addToCart }) => {
 
   return (
     <div className="home">
-      <h1>Welcome to Our Store</h1>
-      <ProductList products={products} addToCart={addToCart} />
+      <h1 className="text-center my-4">Welcome to Our Store</h1>
+      <ProductList products={products} addToCart={addToCart} cart={cart} />
     </div>
   );
 };

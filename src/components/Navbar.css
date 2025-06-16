@@ -1,27 +1,50 @@
-/* src/components/Navbar.css */
+/* Navbar logo animation */
+.animate-logo {
+  font-weight: 600;
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.animate-logo:hover {
+  transform: scale(1.1);
+}
+
+/* Remove default underline and set base nav link style */
+.navbar .nav-link {
+  text-decoration: none !important;
+  color: #ffffff;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+/* Hover effect underline */
+.hover-underline::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  left: 0;
+  bottom: 0;
+  background-color: #ffffff;
+  transition: 0.4s;
+}
+
+/* Expand underline on hover */
+.hover-underline:hover::after {
+  width: 100%;
+}
+
+/* Active link underline always visible */
+.navbar .nav-link.active::after {
+  width: 100%;
+}
+
+/* Optional: color change on hover */
+.navbar .nav-link:hover {
+  color: #f8f9fa;
+}
+
+/* Navbar layering fix */
 .navbar {
-    background-color: #333;
-    padding: 10px;
-    display: flex;
-    justify-content: space-around;
-  }
-  
-  .navbar ul {
-    list-style-type: none;
-    display: flex;
-  }
-  
-  .navbar li {
-    margin-right: 20px;
-  }
-  
-  .navbar a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-  }
-  
-  .navbar a:hover {
-    color: #f0f0f0;
-  }
-  
+  z-index: 1000;
+}
